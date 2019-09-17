@@ -1,0 +1,30 @@
+<ion-header>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Threesa Infoway</span>
+      <span class="example-spacer"></span>
+
+      <span class="example-icon" (click)="setAttendance()" ><i class="material-icons icon" [ngClass]="{'active-user':userActive == 1}">
+fingerprint
+</i></span>
+      <span class="example-icon" [matMenuTriggerFor]="menu"><i class="icon icon-paint"></i></span>
+    </mat-toolbar-row>
+
+  </mat-toolbar>
+
+  <mat-menu #menu="matMenu">
+    <mat-list role="list">
+      <button mat-menu-item (click)="setColorThemeOrder()">
+        <mat-icon>loop</mat-icon>
+        <span>Swap</span>
+      </button>
+
+      <button mat-menu-item *ngFor="let data of colorTheme;let i = index;" class="mt-1" (click)="SelectedItem(data,i)">
+        <div class="row">
+          <div class="col-6 p-4" [primarybg]="data.primary"></div>
+          <div class="col-6 p-4" [accentbg]="data.accent"></div>
+        </div>
+      </button>
+    </mat-list>
+  </mat-menu>
+</ion-header>

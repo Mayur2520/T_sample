@@ -1,0 +1,48 @@
+<app-navigation></app-navigation>
+<ion-content fullscreen>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card1">
+         <span class="ds-card-header">Customers</span>
+         <span class="ds-card-counter">{{dashboarCounts[0].customers}}</span>
+         <img src="../../assets/icon/dashboard/customers.png" class="ds-img">
+        </ion-col>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card2">
+           <span class="ds-card-header">Enquiries</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].newenq}}</span>
+           <img src="../../assets/icon/dashboard/enquiry.png" class="ds-img">
+        </ion-col>
+        <ion-col size="12" class="card p-2 dashboard-block ds-card3">
+           <span class="ds-card-header">Complaints</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].compl}}</span>
+           <img src="../../assets/icon/dashboard/complaint.png" class="ds-img">
+        </ion-col>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card2">
+           <span class="ds-card-header">Connections</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].newconn}}</span>
+           <img src="../../assets/icon/dashboard/connection.png" class="ds-img">
+        </ion-col>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card1">
+           <span class="ds-card-header">Collection</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].totalcollection?(dashboarCounts[0].totalcollection | currency:'&#8377;'):(0 | currency:'&#8377;')}}</span>
+           <img src="../../assets/icon/dashboard/collection.png" class="ds-img">
+        </ion-col>
+        <ion-col size="12" class="card p-2 dashboard-block ds-card3">
+           <span class="ds-card-header">Present Days</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].presentdays}} Days.</span>
+           <img src="../../assets/icon/dashboard/attendance.png" class="ds-img">
+        </ion-col>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card1">
+           <span class="ds-card-header">Advance Payment</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].advancebal?(dashboarCounts[0].advancebal | currency:'&#8377;'):(0 | currency:'&#8377;')}}</span>
+           <img src="../../assets/icon/dashboard/advance.png" class="ds-img">
+        </ion-col>
+        <ion-col size="6" class="card p-2 dashboard-block ds-card2">
+           <span class="ds-card-header">Loan Amount</span>
+           <span class="ds-card-counter">{{dashboarCounts[0].loadnbal?(dashboarCounts[0].loadnbal | currency:'&#8377;'):(0 | currency:'&#8377;')}}</span>
+           <img src="../../assets/icon/dashboard/loan.png" class="ds-img">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+ </ion-content>
+ 

@@ -1,0 +1,7 @@
+{
+  "name": "ThreesaInfoway",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

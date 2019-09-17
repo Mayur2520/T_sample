@@ -1,0 +1,30 @@
+<ion-content fullscreen>
+  <ion-grid class="mt-4">
+    <ion-row class="ml-3">
+      <ion-col size="3">
+        <i class="icon icon-threesa ml-4 text-danger logo"></i>
+      </ion-col>
+      <ion-col size="9" style="position: relative;top:-5px;">
+        <div class="col-12 text-white" style="font-size: 3em;font-weight: 600">Threesa</div>
+        <div class="col-12 text-white ml-1" style="font-size: 1.2em;position: relative;top: -15px;">Infoway Pvt Ltd.
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="text-white text-center">Mayur Mhatre</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-img [src]="profilepic"></ion-img>
+
+      <br>
+
+      <ion-button expand="full" color="primary" (click)="setAttendance()">Set Attendance</ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

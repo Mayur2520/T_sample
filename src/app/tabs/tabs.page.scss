@@ -1,0 +1,25 @@
+ion-tab-button
+{
+    --background: transparent;
+    color: #ffffff;
+}
+
+.example-icon {
+    padding: 0 10px;
+    font-size: 32px !important;
+  }
+  
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .icon {
+    overflow: hidden;
+    font-size: 28px !important;
+    position: relative;
+    top: 5px;
+  }
+  .tab-icons{
+    color: #FFFFFF ;
+  }
