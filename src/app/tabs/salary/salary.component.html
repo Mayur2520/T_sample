@@ -1,5 +1,97 @@
 <app-navigation></app-navigation>
 <ion-content fullscreen>
-  
+    <div class="col-12 text-center mt-1">
+        <!-- <ion-title>{{curdate | date : 'mediumDate'  }}</ion-title> -->
+        <ion-item>
+                <ion-label>Month</ion-label>
+                <ion-datetime displayFormat="MMMM YYYY" value="{{curdate}}" (ionChange)="getSalaryDetails(userdetails.userId,$event)"></ion-datetime>
+              </ion-item>
+    </div>
+
+    <div class="col-12 card text-center mt-3">
+        <ion-title>Date Of joining: {{salaryDetails[0].joiningdate | date : 'mediumDate'  }}</ion-title>
+        
+        <div class="row">
+                <ion-item-divider>
+                        <ion-label>
+                          Salary Details
+                        </ion-label>
+                      </ion-item-divider>
+            <div class="col-12 text-left">
+                Salary: {{salaryDetails[0].salary | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Travelling Expence: {{salaryDetails[0].travel_exp | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Mobile Expence: {{salaryDetails[0].mobile_exp | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Other Expence: {{salaryDetails[0].other_exp | currency:'&#8377;'}}
+            </div>
+        </div>
+        <div class="row">
+                <ion-item-divider>
+                        <ion-label>
+                          Working Details
+                        </ion-label>
+                      </ion-item-divider>
+            <div class="col-12 text-left">
+                Working Days: {{TotalDaysInMonth}}
+            </div>
+            <div class="col-12 text-left">
+                Present Days: {{salaryDetails[0].presentdays}}
+            </div>
+            <div class="col-12 text-left">
+                Half Days: {{salaryDetails[0].halfdays}}
+            </div>
+            <div class="col-12 text-left">
+                Latemarks: {{salaryDetails[0].Latemarks}}
+            </div>
+        </div>
+        <div class="row">
+                <ion-item-divider>
+                        <ion-label>
+                          Payment Details
+                        </ion-label>
+                      </ion-item-divider>
+            <div class="col-12 text-left">
+                Salary/Days: {{ (salaryDetails[0].salary/TotalDaysInMonth) | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Advance: {{salaryDetails[0].advance | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Loan EMI: {{salaryDetails[0].loaninst | currency:'&#8377;'}}
+            </div>
+            <div class="col-12 text-left">
+                Net Salary: {{salaryDetails[0].totalsal | currency:'&#8377;'}}
+            </div>
+        </div>
+       
+
+    </div>
  </ion-content>
  
+
+ <!-- Latemarks: 0
+advance: 0
+department: "Engineer"
+designation: "Network Engineer"
+fullname: "Mayur Mhatre"
+halfdays: 0
+id: 53
+joiningdate: "2016-11-07T18:30:00.000Z"
+loaninst: 0
+mobile_exp: 0
+month: null
+other_exp: 0
+payamt: 0
+perdaysal: 0
+presentdays: 0
+salary: 15000
+thursdays: 0
+totalsal: 0
+travel_exp: 1500
+username: "mayur_mh"
+workingdays: null -->

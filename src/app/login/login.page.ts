@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Device } from '@ionic-native/device/ngx';
 import { AuthenticationService } from '../services/authentication.service';
+
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -65,6 +66,7 @@ export class LoginPage implements OnInit {
 
       })
   }
+
 
 
 

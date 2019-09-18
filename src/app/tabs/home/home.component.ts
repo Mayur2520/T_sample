@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../services/dashboard.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
     planscount: null,
     totalcollection: null,
     username: null}];
-  constructor(private _DashboardService : DashboardService, private _storage:Storage) { }
+  constructor(private _DashboardService : DashboardService, private _storage:Storage, private router: Router) { }
   userdetails:any = {fullname:''};
   ngOnInit() {
     this._storage.get('userdetails').then((val) => {
@@ -28,7 +29,6 @@ export class HomeComponent implements OnInit {
       else
       {
         this.userdetails = JSON.parse(val);
-        console.log(this.userdetails)
         this.getDashboardCounts(this.userdetails.Userlevel,this.userdetails.userId);
       }
     });
@@ -39,8 +39,12 @@ export class HomeComponent implements OnInit {
     this._DashboardService.getDashboardCounts(userLevel,userid).subscribe(
       data => {
         this.dashboarCounts = data;
-        console.log(data)
       });
+  }
+
+  RedirectTo(redirectLink)
+  {
+    this.router.navigate([redirectLink]);
   }
 
 }

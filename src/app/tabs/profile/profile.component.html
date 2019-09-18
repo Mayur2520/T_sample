@@ -1,15 +1,50 @@
-<app-navigation></app-navigation>
-<ion-content fullscreen>
+<!-- <app-navigation></app-navigation> -->
+
+<ion-header>
+    <div class="profile-avtar-block navbar">
+        <div class="col-12 text-white text-left profile-name">
+            <h2>{{userdetails.fullname}}</h2>
+            <h6>{{userdetails.Userlevel}}</h6>
+        </div>
+
+        <div class="box1"></div>
+        <div class="box2"></div>
+
+      <div class="col-8 ml-auto mr-auto">
+        <svg version="1.1" id="svg1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve">
+          <path d="M490,474.459H0L245.009,15.541L490,474.459z" fill="teal"/>
+  </svg>
   
+   <svg version="1.1" id="svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve" >
+          <path d="M490,474.459H0L245.009,15.541L490,474.459z" fill="cyan"/>
+  </svg>
+  
+   <svg version="1.1" id="svg3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve" >
+          <path d="M490,474.459H0L245.009,15.541L490,474.459z" fill="	#66f7f1"/>
+  </svg>
+  
+  <img [src]="profilepic" class="rounded-circle" id="profile-avatar">
+  </div>
+    </div>
+  </ion-header>
+
+<ion-content fullscreen>
     <ion-grid>
-        <ion-row class="card grad">
-            <ion-col size="12" class="ml-auto mr-auto text-center mt-2">
-                <ion-title>{{userdetails.fullname}}</ion-title>
+        <ion-row>
+            <ion-col size="12" class="mt-4">
+                <ion-title class="mt-2">
+                    <ion-icon name="mail"></ion-icon> Email: {{userdetails.Email}}
+                </ion-title>
+               
             </ion-col>
-            <ion-col size="12">
-                <ion-avatar class="ml-auto mr-auto mt-2">
-                    <img [src]="profilepic">
-                  </ion-avatar>
+            <ion-col size="12" class="mt-4">
+                <ion-title>
+                    <ion-icon name="phone-portrait"></ion-icon> Mobile: {{userdetails.mobile1}} <span *ngIf="userdetails.mobile2 && userdetails.mobile2 != 0 && userdetails.mobile2 != ''">/ {{userdetails.mobile2}}</span>
+                </ion-title>
+               
             </ion-col>
         </ion-row>
     </ion-grid>

@@ -10,10 +10,21 @@ body {
   
   --accent: rgb(255, 64, 129);
   --primary:rgb(48, 63, 159);
-  --bgcolor1:rgb(255, 64, 129);
-  --bgcolor2:rgb(48, 63, 159);
-  --bgcolordeg:-60deg;
+
+  --primary1:#FF416C;
+  --primary2:#FF4B2B;
+
+  --accent1: #373B44;
+  --accent2: #4286f4;
 }
+
+.navigation-bar
+{
+  background: linear-gradient(to right,var(--primary1),var(--primary2)) !important;
+  color: white !important;
+}
+
+
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,17 +40,20 @@ input[type=number] {
 
 .ds-card1
 {
-    background-image: linear-gradient(var(--dscard1), #ffffff);
+    // background-image: linear-gradient(var(--dscard1), #ffffff);
+    background-image: linear-gradient(#FFB75E, #ED8F03);
     // border: none !important;
 }
 .ds-card2
 {
-    background-image: linear-gradient(var(--dscard2), #ffffff);
+    background-image: linear-gradient(#56ab2f, #a8e063);
+    // background-image: linear-gradient(var(--dscard2), #ffffff);
     // border: none !important;
 }
 .ds-card3
 {
-    background-image: linear-gradient(var(--dscard3), #ffffff);
+    background-image: linear-gradient(#56CCF2,#2F80ED);
+    // background-image: linear-gradient(var(--dscard3), #ffffff);
     // border: none !important;
 }
 

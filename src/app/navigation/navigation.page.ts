@@ -7,6 +7,8 @@ import * as $ from 'jquery';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/observable/interval';
 import 'rxjs/add/operator/Map';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.page.html',
@@ -16,7 +18,25 @@ export class NavigationPage implements OnInit {
 
   colorTheme:Observable<Array<any>>;
   colorThemeName:string;
+  GradDataItem:Array<any> =
+  [
+    {p1:'#bc4e9c',p2:'#f80759',a1:'#00b09b',a2:'#96c93d',blockbg:[{c1:'#FFB75E',c2:'#ED8F03'},{c1:'#d53369',c2:'#cbad6d'},{c1:'#8E2DE2',c2:'#4A00E0'}],p_sample:"linear-gradient(to right,'#bc4e9c','#f80759')",a_sample:"linear-gradient(to right,'#00b09b','#96c93d')"},
+    {p1:'#FF416C',p2:'#FF416C',a1:'#667db6',a2:'#0082c8',blockbg:[{c1:'#1D976C',c2:'#93F9B9'},{c1:'#ff0084',c2:'#33001b'},{c1:'#6a3093',c2:'#a044ff'}],p_sample:"linear-gradient(to right,'#FF416C','#FF416C')",a_sample:"linear-gradient(to right,'#667db6','#0082c8')"},
+    {p1:'#ec008c',p2:'#fc6767',a1:'#56ab2f',a2:'#a8e063',blockbg:[{c1:'#2193b0',c2:'#6dd5ed'},{c1:'#ff00cc',c2:'#333399'},{c1:'#FFE000',c2:'#799F0C'}],p_sample:"linear-gradient(to right,'#ec008c','#fc6767')",a_sample:"linear-gradient(to right,'#56ab2f','#a8e063')"},
+    {p1:'#FF8008',p2:'#FFC837',a1:'#00d2ff',a2:'#3a7bd5',blockbg:[{c1:'#FFB75E',c2:'#ED8F03'},{c1:'#d53369',c2:'#cbad6d'},{c1:'#8E2DE2',c2:'#4A00E0'}],p_sample:"linear-gradient(to right,'#FF8008','#FFC837')",a_sample:"linear-gradient(to right,'#00d2ff','#3a7bd5')"},
+    {p1:'#00d2ff',p2:'#928DAB',a1:'#cc2b5e',a2:'#753a88',blockbg:[{c1:'#1D976C',c2:'#93F9B9'},{c1:'#ff0084',c2:'#33001b'},{c1:'#6a3093',c2:'#a044ff'}],p_sample:"linear-gradient(to right,'#00d2ff','#928DAB')",a_sample:"linear-gradient(to right,'#cc2b5e','#753a88')"},
+    {p1:'#348F50',p2:'#56B4D3',a1:'#e53935',a2:'#e35d5b',blockbg:[{c1:'#2193b0',c2:'#6dd5ed'},{c1:'#ff00cc',c2:'#333399'},{c1:'#FFE000',c2:'#799F0C'}],p_sample:"linear-gradient(to right,'#348F50','#56B4D3')",a_sample:"linear-gradient(to right,'#e53935','#e35d5b')"},
+  ]
 
+  ReverseGradDataItem:Array<any> =
+  [
+    {a1:'#bc4e9c',a2:'#f80759',p1:'#00b09b',p2:'#96c93d',blockbg:[{c1:'#FFB75E',c2:'#ED8F03'},{c1:'#d53369',c2:'#cbad6d'},{c1:'#8E2DE2',c2:'#4A00E0'}]},
+    {a1:'#FF416C',a2:'#FF4B2B',p1:'#667db6',p2:'#0082c8',blockbg:[{c1:'#1D976C',c2:'#93F9B9'},{c1:'#ff0084',c2:'#33001b'},{c1:'#6a3093',c2:'#a044ff'}]},
+    {a1:'#ec008c',a2:'#fc6767',p1:'#56ab2f',p2:'#a8e063',blockbg:[{c1:'#2193b0',c2:'#6dd5ed'},{c1:'#ff00cc',c2:'#333399'},{c1:'#FFE000',c2:'#799F0C'}]},
+    {a1:'#FF8008',a2:'#FFC837',p1:'#00d2ff',p2:'#3a7bd5',blockbg:[{c1:'#FFB75E',c2:'#ED8F03'},{c1:'#d53369',c2:'#cbad6d'},{c1:'#8E2DE2',c2:'#4A00E0'}]},
+    {a1:'#00d2ff',a2:'#928DAB',p1:'#cc2b5e',p2:'#753a88',blockbg:[{c1:'#1D976C',c2:'#93F9B9'},{c1:'#ff0084',c2:'#33001b'},{c1:'#6a3093',c2:'#a044ff'}]},
+    {a1:'#348F50',a2:'#56B4D3',p1:'#e53935',p2:'#e35d5b',blockbg:[{c1:'#2193b0',c2:'#6dd5ed'},{c1:'#ff00cc',c2:'#333399'},{c1:'#FFE000',c2:'#799F0C'}]},
+  ]
   dataItems:Array<any> = [
     {primary:"rgb(48, 63, 159)",accent:"rgb(255, 64, 129)",blockbg:['#40ffbf','#ffbf40','#3f9f30']},
     {primary:"rgb(25, 118, 210)",accent:"rgb(255, 82, 82)",blockbg:['#d27519','#7519d2','#75d219']},
@@ -125,37 +145,57 @@ export class NavigationPage implements OnInit {
   setAttendance()
   {
 
-    this.geolocation.getCurrentPosition().then((resp) => {
-      // resp.coords.latitude
-      // resp.coords.longitude
 
-
-      this._AuthenticationService.setAttendance({lat:resp.coords.latitude,lan:resp.coords.longitude,userid:this.userdetails.userId}).subscribe(
-        data => {
-          
-
-
-          /* if(data.status == 0)
-          {
-          this.router.navigate(['/tabs']);
-          }  
-          else if(data.status == 4)
-          {
-            this.router.navigate(['/login']);
-          }
-          else
-          {
-            alert(data.message);
-            this.router.navigate(['/tabs']);
-          } */
-  
-        })
-
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Contact to admin if reset your out time.',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes!',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        this.geolocation.getCurrentPosition().then((resp) => {
+          // resp.coords.latitude
+          // resp.coords.longitude
+    
+    
+          this._AuthenticationService.setAttendance({lat:resp.coords.latitude,lan:resp.coords.longitude,userid:this.userdetails.userId}).subscribe(
+            data => {
+              
+               if(data.status == 0)
+              {
+              this.router.navigate(['/tabs']);
+              }  
+              else if(data.status == 4)
+              {
+                this.router.navigate(['/login']);
+              }
+              else
+              {
+                alert(data.message);
+                this.router.navigate(['/tabs']);
+              } 
       
+            })
+    
+          
+    
+         }).catch((error) => {
+           console.log('Error getting location', error);
+         });
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your Out time Not registered',
+          'error'
+        )
+      }
+    })
 
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
+   
      
   }
 

@@ -1,0 +1,38 @@
+<ion-header>
+    <mat-toolbar class="navigation-bar">
+        <mat-toolbar-row>
+      <ion-buttons slot="start">
+        <ion-back-button
+            [icon]="buttonIcon">
+        </ion-back-button>
+      </ion-buttons>
+      
+      <ion-title>Complaints</ion-title>
+      <ion-buttons slot="end" (click)="ShowHideSearch()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-buttons>
+        </mat-toolbar-row>
+        <mat-toolbar-row *ngIf="ActiveSearch" class="animated slideInDown">
+            <mat-form-field  class="col-12" [floatLabel]="'never'">
+                <input matInput placeholder="Search" [(ngModel)]="searchfilter.customername">
+              </mat-form-field>
+        </mat-toolbar-row>
+    </mat-toolbar>
+  </ion-header>
+
+  <ion-content fullscreen>
+    
+      <ion-list>
+        <!--   <ion-list-header>
+            Recent Conversations
+          </ion-list-header> -->
+  
+          <ion-item line="full" *ngFor="let data of complaintsList | filterBy: searchfilter; let i = index">
+            <ion-label>
+              <h2>{{data.customername}} {{data.complaintdate | date:'mediumDate'}}</h2>
+              <h3>{{data.timeaqured | date:'shortTime'}} </h3>
+              <p>{{data.issue}} {{data.otherissue}}</p>
+            </ion-label>
+          </ion-item>
+          </ion-list>
+    </ion-content>

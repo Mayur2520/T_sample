@@ -3,6 +3,7 @@ import { Storage } from '@ionic/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AuthenticationService } from '../../services/authentication.service';
+import { interval, Subscription } from 'rxjs';
 @Component({
   selector: 'app-attendance',
   templateUrl: './attendance.component.html',
@@ -10,8 +11,13 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class AttendanceComponent implements OnInit {
 
+  subscription: Subscription;
 
-  constructor(private _AuthenticationService :AuthenticationService, private _storage:Storage, private router: Router,private geolocation: Geolocation) { }
+  constructor(private _AuthenticationService :AuthenticationService, private _storage:Storage, private router: Router,private geolocation: Geolocation) {
+
+    const source = interval(5000);
+    this.subscription = source.subscribe(val => this.SendCurrentLocation());
+   }
 
   userdetails:any = {fullname:''};
   serverip:String = this._AuthenticationService.apiUrl;
@@ -21,7 +27,7 @@ export class AttendanceComponent implements OnInit {
   ngOnInit() {
     setTimeout( ()=>{
       this.getUserDetails();
-    }, 5000);
+    }, 100);
   }
   getUserDetails()
   {
@@ -65,9 +71,6 @@ export class AttendanceComponent implements OnInit {
 
       this._AuthenticationService.setAttendance({lat:resp.coords.latitude,lan:resp.coords.longitude,userid:this.userdetails.userId}).subscribe(
         data => {
-          
-          console.log(data);
-
           if(data.status == 0)
           {
           this.router.navigate(['/tabs']);
@@ -91,5 +94,22 @@ export class AttendanceComponent implements OnInit {
      });
      
   }
+
+  SendCurrentLocation()
+  {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      // resp.coords.latitude
+      // resp.coords.longitude
+
+
+      this._AuthenticationService.SendCurrentLocation({lat:resp.coords.latitude,lan:resp.coords.longitude,userid:this.userdetails.userId}).subscribe(
+        data => {
+        });
+      });
+  }
+
+
+    
+  
 
 }

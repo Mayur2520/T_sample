@@ -2,22 +2,22 @@
 <ion-content fullscreen>
     <ion-grid>
       <ion-row>
-        <ion-col size="6" class="card p-2 dashboard-block ds-card1">
+        <ion-col size="6" class="card p-2 dashboard-block ds-card1" (click)="RedirectTo('components/customers')">
          <span class="ds-card-header">Customers</span>
          <span class="ds-card-counter">{{dashboarCounts[0].customers}}</span>
          <img src="../../assets/icon/dashboard/customers.png" class="ds-img">
         </ion-col>
-        <ion-col size="6" class="card p-2 dashboard-block ds-card2">
+        <ion-col size="6" class="card p-2 dashboard-block ds-card2" (click)="RedirectTo('components/enquiries')">
            <span class="ds-card-header">Enquiries</span>
            <span class="ds-card-counter">{{dashboarCounts[0].newenq}}</span>
            <img src="../../assets/icon/dashboard/enquiry.png" class="ds-img">
         </ion-col>
-        <ion-col size="12" class="card p-2 dashboard-block ds-card3">
+        <ion-col size="12" class="card p-2 dashboard-block ds-card3" (click)="RedirectTo('components/complaints')">
            <span class="ds-card-header">Complaints</span>
            <span class="ds-card-counter">{{dashboarCounts[0].compl}}</span>
            <img src="../../assets/icon/dashboard/complaint.png" class="ds-img">
         </ion-col>
-        <ion-col size="6" class="card p-2 dashboard-block ds-card2">
+        <ion-col size="6" class="card p-2 dashboard-block ds-card2" (click)="RedirectTo('components/connections')">
            <span class="ds-card-header">Connections</span>
            <span class="ds-card-counter">{{dashboarCounts[0].newconn}}</span>
            <img src="../../assets/icon/dashboard/connection.png" class="ds-img">

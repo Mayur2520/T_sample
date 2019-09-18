@@ -37,6 +37,7 @@
     "@ionic/angular": "^4.7.1",
     "@ionic/storage": "^2.2.0",
     "@mauron85/cordova-plugin-background-geolocation": "3.0.5",
+    "animate.css": "^3.7.2",
     "cordova-android": "8.0.0",
     "cordova-device-accounts-v2": "2.0.8",
     "cordova-plugin-3dtouch": "1.3.6",
@@ -44,12 +45,15 @@
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-geolocation": "4.0.2",
+    "cordova-plugin-mauron85-background-geolocation": "^3.0.1",
     "cordova-plugin-request-location-accuracy": "2.3.0",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
     "jquery": "^3.4.1",
+    "ngx-filter-pipe": "^2.1.2",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.3",
+    "sweetalert2": "^8.17.4",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
   },
@@ -88,10 +92,21 @@
   "cordova": {
     "plugins": {
       "cordova-plugin-3dtouch": {},
-      "cordova-plugin-request-location-accuracy": {},
+      "cordova-plugin-request-location-accuracy": {
+        "PLAY_SERVICES_LOCATION_VERSION": "16.+"
+      },
       "cordova-plugin-geolocation": {},
       "cordova-plugin-device": {},
-      "cordova-plugin-mauron85-background-geolocation": {},
+      "cordova-plugin-mauron85-background-geolocation": {
+        "GOOGLE_PLAY_SERVICES_VERSION": "11+",
+        "ANDROID_SUPPORT_LIBRARY_VERSION": "26+",
+        "ICON": "@mipmap/icon",
+        "SMALL_ICON": "@mipmap/icon",
+        "ACCOUNT_NAME": "@string/app_name",
+        "ACCOUNT_LABEL": "@string/app_name",
+        "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
+        "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+      },
       "cordova-plugin-autostart": {},
       "cordova-device-accounts-v2": {},
       "cordova-plugin-background-mode": {},
